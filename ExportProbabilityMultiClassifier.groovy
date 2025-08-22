@@ -34,9 +34,8 @@ import qupath.opencv.ml.pixel.PixelClassifierTools
 
 // Setup & image info
 def imageData  = getCurrentImageData()
-def baseServer = imageData.getServer()
 def nameWithExtension = imageData.getServer().getMetadata().getName()
-def baseName = GeneralTools.stripExtension(nameWithExtension)
+def name = GeneralTools.stripExtension(nameWithExtension)
 
 //Create output directory inside project folder
 def outputDir = buildFilePath(PROJECT_BASE_DIR, "probability_images")
@@ -99,7 +98,7 @@ def multi = builder.build()
 
 /* 4) Write output in "probability_images" folder
 ****************************************************/
-def outName = "${baseName}_probs.ome.tif"
+def outName = "${name}_probs.ome.tif"
 def outPath = buildFilePath(outputDir, outName)
 writeImage(multi, outPath)
 
