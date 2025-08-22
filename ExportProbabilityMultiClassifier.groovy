@@ -35,7 +35,8 @@ import qupath.opencv.ml.pixel.PixelClassifierTools
 // Setup & image info
 def imageData  = getCurrentImageData()
 def baseServer = imageData.getServer()
-def baseName   = GeneralTools.getNameWithoutExtension(baseServer.getMetadata().getName())
+def nameWithExtension = imageData.getServer().getMetadata().getName()
+def baseName = GeneralTools.stripExtension(nameWithExtension)
 
 //Create output directory inside project folder
 def outputDir = buildFilePath(PROJECT_BASE_DIR, "probability_images")
